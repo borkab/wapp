@@ -1,7 +1,6 @@
 package wapp
 
 import (
-	"fmt"
 	"io"
 	"net/http"
 )
@@ -12,12 +11,18 @@ type Wapp struct {
 
 //http.Handler interface:
 func (wa *Wapp) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	w.Write(wa.lastfoo)
 
-	bs, err := io.ReadAll(r.Body)
-	if err != nil {
-		return
+	if r.Method == "POST" { //megjegyezzuk
+		bs, err := io.ReadAll(r.Body)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		wa.lastfoo = bs
+		w.WriteHeader(201)
 	}
-	wa.lastfoo = bs
-	fmt.Println(string(bs))
+	if r.Method == "GET" { //visszaadjuk
+		w.WriteHeader(http.StatusOK)
+		w.Write(wa.lastfoo)
+	}
 }
