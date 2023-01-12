@@ -26,7 +26,7 @@ func TestHandler(t *testing.T) {
 		}
 
 		resp, err := http.DefaultClient.Do(req)
-		fmt.Println(resp) //response objektum
+		fmt.Println(resp) //response objektum (valasz)
 		if err != nil {
 			t.Fatal(err)
 		}

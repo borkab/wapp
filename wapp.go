@@ -5,11 +5,11 @@ import (
 	"net/http"
 )
 
-type Wapp struct {
+type Wapp struct { //our handler
 	lastfoo []byte
 }
 
-//http.Handler interface:
+// http.Handler interface:
 func (wa *Wapp) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "POST" { //megjegyezzuk

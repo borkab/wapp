@@ -7,5 +7,5 @@ import (
 
 func main() {
 
-	http.ListenAndServe(":8080", &wapp.Wapp{})
+	http.ListenAndServe(":8080", &wapp.Wapp{}) //a program a 8080 porton figyel a helyi szerveren
 }
