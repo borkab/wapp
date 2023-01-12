@@ -6,7 +6,7 @@ import (
 )
 
 type Wapp struct { //our handler
-	lastfoo []byte
+	lastfoo []byte //
 }
 
 // http.Handler interface:
